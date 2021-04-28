@@ -2,21 +2,31 @@ import discord
 from dotenv import load_dotenv
 import requests
 import os
+load_dotenv()
 TOKEN = os.environ.get("TOKEN")
+import logging
+# Enable logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
 
+logger = logging.getLogger(__name__)
 
 def get_cat():
+    logger.error("GET CAT")
     result = requests.get("https://api.thecatapi.com/v1/images/search").json()
     return result[0]['url']
 
 
 def get_dog():
+    logger.error("GET DOG")
+
     result = requests.get("https://dog.ceo/api/breeds/image/random").json()
     return result['message']
 
 
 class YLBotClient(discord.Client):
     async def on_ready(self):
+        logger.error("ON READY")
         print(f'Бот готов')
         for guild in self.guilds:
             print(
@@ -36,4 +46,7 @@ class YLBotClient(discord.Client):
 
 
 client = YLBotClient()
+logger.error("START BOT")
+logger.error(TOKEN)
+
 client.run(TOKEN)
