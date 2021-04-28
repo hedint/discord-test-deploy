@@ -33,6 +33,10 @@ class YLBotClient(discord.Client):
             )
 
     async def on_message(self, message):
+        logger.error(message.content.lower())
+        logger.error(message.content.lower() in ["кот", "котец", "котик", "котель", "кошка"])
+
+
         if message.author == self.user:
             return
         if message.content.lower() in ["кот", "котец", "котик", "котель", "кошка"]:
