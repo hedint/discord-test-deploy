@@ -1,8 +1,6 @@
 import discord
-from dotenv import load_dotenv
 import requests
 import os
-load_dotenv()
 TOKEN = os.environ.get("TOKEN")
 import logging
 # Enable logging
