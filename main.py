@@ -1,10 +1,8 @@
 import discord
 from dotenv import load_dotenv
-import os
 import requests
-
-load_dotenv()
-TOKEN = "ODI4Mzg2NjI1NTc4NDY3Mzc5.YGo1Kg.uPTmfTkZFKK9XigoGKZ4hcIOcX8"
+import os
+TOKEN = os.environ.get("TOKEN")
 
 
 def get_cat():
